@@ -13,8 +13,7 @@ class Column():
         return str(self.cells)
 
 
-    def delete_op(self, value, pos=-1):
-
+    def delete_option(self, value, pos=-1):
         if isinstance(pos, int) and pos != -1:
             mask = np.ones(9, dtype=bool)
             mask[(pos//3)*3:(pos//3)*3+3] = False

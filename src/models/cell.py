@@ -4,11 +4,9 @@ class Cell():
 
     def __init__(self, value, row, col):
         self.ID = Cell.ID
-        self.value = value
+        self.value = int(value)
         self.pos = [row, col]
-        self.possible = []
-        if Cell.ID == 81:
-            Cell.ID = 0
+        self.possible = [] if value != 0 else [1,2,3,4,5,6,7,8,9]
         Cell.ID += 1
 
     def __repr__(self):
@@ -19,19 +17,20 @@ class Cell():
         self.possible.remove(value)
         if len(self.possible) == 1:
             self.setValue(self.possible[0])
+    
 
     @classmethod
-    def getValue(self, cell):
+    def get_value(self, cell):
         return cell.value
 
-    def setValue(self, value):
+    def set_value(self, value):
         self.value = value
         self.possible = []
 
     @classmethod
-    def getID(self, cell):
+    def get_id(self, cell):
         return cell.ID
 
     @classmethod
-    def getPossible(self, cell):
+    def get_possible(self, cell):
         return list(sorted(cell.possible))

@@ -3,14 +3,14 @@ import numpy as np
 class Row():
     def __init__(self, cells, position):
 
-        self.digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        self.digits = list(range(1, 10))
         self.cells = cells
         self.pos = position
 
     def __repr__(self):
         return str(self.cells)
 
-    def delete_op(self, value, pos=-1):
+    def delete_option(self, value, pos=-1):
 
         if isinstance(pos, int) and pos != -1:
             mask = np.ones(9, dtype=bool)
