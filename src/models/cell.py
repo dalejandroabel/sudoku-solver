@@ -1,6 +1,6 @@
 class Cell():
     # identifier of the cell, used to know the position on the board
-    ID = 1
+    ID = 0
 
     def __init__(self, value, row, col):
         self.ID = Cell.ID
@@ -8,6 +8,8 @@ class Cell():
         self.pos = [row, col]
         self.possible = [] if value != 0 else [1,2,3,4,5,6,7,8,9]
         Cell.ID += 1
+        if Cell.ID == 81:
+            Cell.ID = 0
 
     def __repr__(self):
         return str(self.value)

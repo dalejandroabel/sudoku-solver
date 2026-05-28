@@ -1,17 +1,16 @@
 import matplotlib.pyplot as plt
+from itertools import permutations
+
 import numpy as np
 
-a = np.arange(81)
-for i in a:
-    row, col = divmod(i, 9)
-    grid = 3*((row)//3)+(col//3)
-    grid_position = (row%3)*3 + (col%3)
-    print(f"ID: {i}, Row: {row}, Col: {col}, Grid: {grid}, Grid Position: {grid_position}")
+def get_group(id):
+    return divmod(id, 9)
+print([get_group(i) for i in [23,26]])
 
 
-
-
-
+a = range(0, 9)
+b = [0, 1, 2]
+print(set(a).difference(b))
 
 
 

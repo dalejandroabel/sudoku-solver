@@ -8,10 +8,14 @@ class Column():
 
         self.cells = cells
         self.pos = position
+        self.possible = list(range(1, 10))
 
     def __repr__(self):
         return str(self.cells)
-
+    
+    def delete_possible_in(self, value):
+        if value in self.possible:
+            self.possible.remove(value)
 
     def delete_option(self, value, pos=-1):
         if isinstance(pos, int) and pos != -1:
@@ -23,7 +27,7 @@ class Column():
                     cell_in_column.possible.remove(value)
 
         # Seccion para X-Wings
-        elif isinstance(pos, list):
+        elif isinstance(pos, (list, np.ndarray, tuple)):
             for i in range(9):
                 if i in pos:
                     continue

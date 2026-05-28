@@ -6,9 +6,14 @@ class Row():
         self.digits = list(range(1, 10))
         self.cells = cells
         self.pos = position
+        self.possible = list(range(1, 10))
 
     def __repr__(self):
         return str(self.cells)
+
+    def delete_possible_in(self, value):
+        if value in self.possible:
+            self.possible.remove(value)
 
     def delete_option(self, value, pos=-1):
 
@@ -21,13 +26,12 @@ class Row():
                     cell_in_row.possible.remove(value)
 
         # Seccion para X-Wings
-        elif isinstance(pos, list):
+        elif isinstance(pos, (list, np.ndarray, tuple)):
             for i in range(9):
                 if i in pos:
                     continue
-                cell = self.cells[i]
-                if value in cell.possible:
-                    cell.possible.remove(value)
+                if value in self.cells[i].possible:
+                    self.cells[i].possible.remove(value)
         else:
             for cell_in_row in self.cells:
                 if value in cell_in_row.possible:

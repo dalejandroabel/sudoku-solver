@@ -1,3 +1,4 @@
+import numpy as np
 
 class Grid():
 
@@ -5,6 +6,7 @@ class Grid():
 
         self.cells = cells
         self.pos = position
+        self.possible = list(range(1, 10))
 
     def __repr__(self):
         return str(self.cells)
@@ -19,9 +21,13 @@ class Grid():
     # Funcion usada para eliminar posibles valores  de todo el grid dada
     # una celda y la lista de grids
 
+    def delete_possible_in(self, value):
+        if value in self.possible:
+            self.possible.remove(value)
+
     def delete_option(self, value, pos=-1):
 
-        if isinstance(pos, list):
+        if isinstance(pos, (list, np.ndarray, tuple)):
             for i in range(9):
                 if i in pos:
                     continue
@@ -32,5 +38,6 @@ class Grid():
             for cell_grid in self.cells:
                 if value in cell_grid.possible:
                     cell_grid.possible.remove(value)
+                
         
 
